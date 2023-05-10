@@ -1,27 +1,32 @@
+type PersonGender = 'male' | 'female'
+
 export interface IPersonView {
-  expanded: boolean,
-  data: {
+  persons: {
+    id: number,
+    name: string,
+    gender: PersonGender,
+    born: string,
+    mid?: number,
+    fid?: number,
+    partners?: number[]
+  }[]
+}
+
+export interface IPersonDTO {
+  data: null | {
+    id: number,
     surname: string,
     firstname: string,
     patronymic: string,
     maidenname: string,
-    avatar: string,
-  },
-  children: IPersonView[]
-}
-
-export interface IPersonDTO {
-  id: number,
-  surname: string,
-  firstname: string,
-  patronymic: string,
-  maidenname: string,
-  motherId: number,
-  fatherId: number,
-  partners: number[],
-  gender: 'male' | 'female'
-  biography: string,
-  birthdate: string,
-  deathdate: string,
-  avatar: string
+    motherId: number,
+    fatherId: number,
+    partners: number[],
+    gender: PersonGender
+    biography: string,
+    birthdate: string,
+    deathdate: string,
+    avatar: string
+  }[],
+  error?: unknown
 }
